@@ -2,746 +2,1332 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="احسبها لي - حاسبات مجانية وسهلة للفلوس والدراسة والحياة اليومية.">
 <meta name="theme-color" content="#2563eb">
-<meta name="description" content="احسبها لي - مجموعة حاسبات مجانية وسريعة للمصاريف والبنزين والكهرباء والدرجات والنسب والأقساط والعملات">
-<title>احسبها لي | حاسبات مجانية</title>
+
+<title>احسبها لي | كل الحاسبات في مكان واحد</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
- --primary:#2563eb;
- --primary2:#1d4ed8;
- --bg:#f4f7fb;
- --card:#fff;
- --text:#172033;
- --muted:#667085;
- --border:#e5e7eb;
- --success:#16a34a;
- --danger:#dc2626;
+*{
+  box-sizing:border-box;
 }
-body.dark{
- --bg:#0f172a;
- --card:#1e293b;
- --text:#f8fafc;
- --muted:#cbd5e1;
- --border:#334155;
-}
+
 body{
- font-family:Arial,Tahoma,sans-serif;
- background:var(--bg);
- color:var(--text);
- transition:.25s;
+  margin:0;
+  font-family:Arial,Tahoma,sans-serif;
+  background:#f4f7fb;
+  color:#172033;
+  transition:.25s;
 }
+
+body.dark{
+  background:#101827;
+  color:#f5f7fb;
+}
+
 header{
- background:var(--card);
- border-bottom:1px solid var(--border);
- position:sticky;
- top:0;
- z-index:10;
+  height:80px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 25px;
+  border-bottom:1px solid #e5e7eb;
+  position:sticky;
+  top:0;
+  z-index:5;
 }
-.nav{
- max-width:1100px;
- margin:auto;
- padding:14px 18px;
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:10px;
+
+.dark header{
+  background:#172033;
+  border-color:#263247;
 }
+
 .logo{
- font-size:22px;
- font-weight:800;
- color:var(--primary);
+  font-size:27px;
+  font-weight:800;
+  color:#2563eb;
 }
-.iconbtn{
- border:1px solid var(--border);
- background:var(--card);
- color:var(--text);
- padding:9px 12px;
- border-radius:12px;
- cursor:pointer;
- font-size:18px;
+
+.theme{
+  width:54px;
+  height:44px;
+  border:1px solid #ddd;
+  border-radius:14px;
+  background:#fff;
+  cursor:pointer;
+  font-size:23px;
 }
+
+.dark .theme{
+  background:#202b3e;
+  color:#fff;
+  border-color:#3b4659;
+}
+
 .hero{
- max-width:1100px;
- margin:auto;
- padding:35px 18px 20px;
- text-align:center;
+  text-align:center;
+  padding:55px 15px 25px;
 }
-.hero h1{font-size:32px;margin-bottom:10px}
-.hero p{color:var(--muted);margin-bottom:22px}
+
+.hero h1{
+  font-size:48px;
+  margin:0 0 14px;
+}
+
+.hero p{
+  font-size:20px;
+  color:#667085;
+  margin:0 0 25px;
+}
+
+.dark .hero p{
+  color:#aab4c5;
+}
+
 .search{
- width:100%;
- max-width:650px;
- padding:15px 18px;
- border:1px solid var(--border);
- border-radius:15px;
- background:var(--card);
- color:var(--text);
- font-size:16px;
- outline:none;
+  width:min(650px,94%);
+  padding:18px 22px;
+  border-radius:22px;
+  border:1px solid #dfe4ec;
+  background:#fff;
+  outline:none;
+  font-size:18px;
 }
+
+.dark .search{
+  background:#182235;
+  color:#fff;
+  border-color:#344057;
+}
+
 .categories{
- max-width:1100px;
- margin:0 auto 20px;
- padding:0 18px;
- display:flex;
- gap:8px;
- overflow:auto;
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding:8px 18px 25px;
+  justify-content:center;
 }
+
 .cat{
- white-space:nowrap;
- border:1px solid var(--border);
- background:var(--card);
- color:var(--text);
- padding:10px 15px;
- border-radius:12px;
- cursor:pointer;
+  border:1px solid #e1e6ee;
+  background:#fff;
+  border-radius:22px;
+  padding:11px 22px;
+  white-space:nowrap;
+  cursor:pointer;
 }
+
 .cat.active{
- background:var(--primary);
- color:#fff;
- border-color:var(--primary);
+  background:#2563eb;
+  color:#fff;
+  border-color:#2563eb;
 }
+
+.dark .cat{
+  background:#1a2638;
+  color:#fff;
+  border-color:#334056;
+}
+
 .grid{
- max-width:1100px;
- margin:auto;
- padding:0 18px 40px;
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
- gap:15px;
+  max-width:1000px;
+  margin:auto;
+  padding:0 18px 55px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
 }
+
 .card{
- background:var(--card);
- border:1px solid var(--border);
- border-radius:18px;
- padding:20px;
- cursor:pointer;
- transition:.2s;
+  background:#fff;
+  border:1px solid #e3e7ee;
+  border-radius:25px;
+  padding:25px;
+  box-shadow:0 5px 20px #16213d0d;
+  cursor:pointer;
 }
-.card:hover{transform:translateY(-3px)}
-.card .emoji{font-size:34px;margin-bottom:12px}
-.card h3{margin-bottom:7px}
-.card p{color:var(--muted);font-size:14px}
-.calculator{
- display:none;
- max-width:700px;
- margin:0 auto 40px;
- padding:0 18px;
+
+.dark .card{
+  background:#182235;
+  border-color:#2c3950;
 }
-.calcbox{
- background:var(--card);
- border:1px solid var(--border);
- border-radius:20px;
- padding:22px;
+
+.icon{
+  font-size:38px;
 }
-.calcbox h2{margin-bottom:18px}
-.back{
- border:0;
- background:transparent;
- color:var(--primary);
- cursor:pointer;
- margin-bottom:15px;
- font-size:15px;
+
+.card h2{
+  margin:8px 0;
+  font-size:25px;
 }
-label{
- display:block;
- margin:12px 0 6px;
- font-weight:bold;
+
+.card p{
+  color:#667085;
+  margin:0 0 15px;
 }
-input,select{
- width:100%;
- padding:13px;
- border:1px solid var(--border);
- border-radius:11px;
- background:var(--bg);
- color:var(--text);
- font-size:16px;
- outline:none;
+
+.dark .card p{
+  color:#aab4c5;
 }
-button.calculate{
- width:100%;
- margin-top:18px;
- padding:14px;
- border:0;
- border-radius:12px;
- background:var(--primary);
- color:#fff;
- font-size:17px;
- font-weight:bold;
- cursor:pointer;
+
+.form{
+  display:none;
+  border-top:1px solid #eee;
+  margin-top:15px;
+  padding-top:15px;
+  cursor:default;
 }
+
+.card.open .form{
+  display:block;
+}
+
+.field{
+  margin:10px 0;
+}
+
+.field label{
+  display:block;
+  margin-bottom:6px;
+  font-weight:bold;
+}
+
+.field input{
+  width:100%;
+  padding:12px;
+  border:1px solid #d5dae3;
+  border-radius:11px;
+  background:#fff;
+}
+
+.dark .field input{
+  background:#101827;
+  color:#fff;
+  border-color:#3a465b;
+}
+
+.calc{
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:12px;
+  background:#2563eb;
+  color:#fff;
+  cursor:pointer;
+  margin-top:5px;
+}
+
 .result{
- margin-top:18px;
- padding:16px;
- border-radius:13px;
- background:rgba(37,99,235,.1);
- line-height:1.9;
- font-weight:bold;
+  margin-top:12px;
+  padding:12px;
+  border-radius:11px;
+  background:#eef5ff;
+  color:#174ea6;
+  font-weight:bold;
+  min-height:20px;
 }
-.note{
- margin-top:12px;
- color:var(--muted);
- font-size:13px;
- line-height:1.7;
+
+.dark .result{
+  background:#132b4f;
+  color:#b9d5ff;
 }
+
 footer{
- border-top:1px solid var(--border);
- text-align:center;
- padding:25px;
- color:var(--muted);
+  text-align:center;
+  padding:25px;
+  color:#667085;
 }
-.hidden{display:none!important}
+
+@media(max-width:700px){
+
+  header{
+    padding:0 16px;
+  }
+
+  .logo{
+    font-size:22px;
+  }
+
+  .hero{
+    padding-top:40px;
+  }
+
+  .hero h1{
+    font-size:39px;
+  }
+
+  .hero p{
+    font-size:18px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+    padding:0 14px 45px;
+  }
+
+  .categories{
+    justify-content:flex-start;
+  }
+}
 </style>
 </head>
 
 <body>
 
 <header>
- <div class="nav">
-  <div class="logo">🧮 احسبها لي</div>
-  <button class="iconbtn" onclick="toggleDark()" id="darkBtn">🌙</button>
- </div>
+
+  <div class="logo">
+    🧮 احسبها لي
+  </div>
+
+  <button class="theme" onclick="toggleTheme()">
+    🌙
+  </button>
+
 </header>
 
+
 <section class="hero">
- <h1>احسبها لي</h1>
- <p>كل الحاسبات اللي محتاجها في مكان واحد</p>
- <input class="search" id="search" placeholder="🔎 ابحث عن حاسبة..." oninput="searchTools()">
+
+  <h1>
+    احسبها لي
+  </h1>
+
+  <p>
+    كل الحاسبات اللي محتاجها في مكان واحد
+  </p>
+
+  <input
+    id="search"
+    class="search"
+    placeholder="🔎 ابحث عن حاسبة..."
+    oninput="searchTools()"
+  >
+
 </section>
 
+
 <div class="categories">
- <button class="cat active" onclick="filterCat('all',this)">الكل</button>
- <button class="cat" onclick="filterCat('money',this)">💰 فلوس</button>
- <button class="cat" onclick="filterCat('daily',this)">🏠 يومية</button>
- <button class="cat" onclick="filterCat('study',this)">🎓 دراسة</button>
- <button class="cat" onclick="filterCat('health',this)">📅 حياة</button>
+
+  <button
+    class="cat active"
+    onclick="filterTools('all',this)"
+  >
+    الكل
+  </button>
+
+  <button
+    class="cat"
+    onclick="filterTools('money',this)"
+  >
+    💰 فلوس
+  </button>
+
+  <button
+    class="cat"
+    onclick="filterTools('daily',this)"
+  >
+    🏠 يومية
+  </button>
+
+  <button
+    class="cat"
+    onclick="filterTools('study',this)"
+  >
+    🎓 دراسة
+  </button>
+
 </div>
 
-<main class="grid" id="grid">
 
-<div class="card" data-cat="daily" data-name="البنزين الوقود السيارة" onclick="openCalc('fuel')">
- <div class="emoji">⛽</div><h3>حاسبة البنزين</h3><p>احسب استهلاك وتكلفة الرحلة</p>
+<main class="grid">
+
+
+<!-- البنزين -->
+
+<div
+  class="card"
+  data-cat="daily"
+  data-name="حاسبة البنزين"
+>
+
+  <div class="icon">
+    ⛽
+  </div>
+
+  <h2>
+    حاسبة البنزين
+  </h2>
+
+  <p>
+    احسب استهلاك وتكلفة الرحلة
+  </p>
+
+  <div class="form">
+
+    <div class="field">
+      <label>
+        المسافة بالكيلومتر
+      </label>
+
+      <input
+        id="fuelDist"
+        type="number"
+      >
+    </div>
+
+
+    <div class="field">
+      <label>
+        استهلاك السيارة (كم/لتر)
+      </label>
+
+      <input
+        id="fuelEff"
+        type="number"
+        value="12"
+      >
+    </div>
+
+
+    <div class="field">
+      <label>
+        سعر اللتر
+      </label>
+
+      <input
+        id="fuelPrice"
+        type="number"
+        value="20"
+      >
+    </div>
+
+
+    <button
+      class="calc"
+      onclick="fuel()"
+    >
+      احسب
+    </button>
+
+    <div
+      class="result"
+      id="fuelResult"
+    ></div>
+
+  </div>
+
 </div>
 
-<div class="card" data-cat="money" data-name="النسبة المئوية النسبة" onclick="openCalc('percent')">
- <div class="emoji">📊</div><h3>النسبة المئوية</h3><p>احسب أي نسبة بسهولة</p>
+
+
+<!-- النسبة المئوية -->
+
+<div
+  class="card"
+  data-cat="money"
+  data-name="النسبة المئوية"
+>
+
+  <div class="icon">
+    📊
+  </div>
+
+  <h2>
+    النسبة المئوية
+  </h2>
+
+  <p>
+    احسب أي نسبة بسهولة
+  </p>
+
+  <div class="form">
+
+    <div class="field">
+      <label>
+        الجزء
+      </label>
+
+      <input
+        id="pctPart"
+        type="number"
+      >
+    </div>
+
+
+    <div class="field">
+      <label>
+        الكل
+      </label>
+
+      <input
+        id="pctTotal"
+        type="number"
+      >
+    </div>
+
+
+    <button
+      class="calc"
+      onclick="pct()"
+    >
+      احسب
+    </button>
+
+    <div
+      class="result"
+      id="pctResult"
+    ></div>
+
+  </div>
+
 </div>
 
-<div class="card" data-cat="money" data-name="الخصم تخفيض السعر" onclick="openCalc('discount')">
- <div class="emoji">🏷️</div><h3>حاسبة الخصم</h3><p>اعرف السعر بعد الخصم</p>
+
+
+<!-- الخصم -->
+
+<div
+  class="card"
+  data-cat="money"
+  data-name="حاسبة الخصم"
+>
+
+  <div class="icon">
+    🏷️
+  </div>
+
+  <h2>
+    حاسبة الخصم
+  </h2>
+
+  <p>
+    اعرف السعر بعد الخصم
+  </p>
+
+  <div class="form">
+
+    <div class="field">
+
+      <label>
+        السعر الأصلي
+      </label>
+
+      <input
+        id="discPrice"
+        type="number"
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        نسبة الخصم %
+      </label>
+
+      <input
+        id="discPct"
+        type="number"
+      >
+
+    </div>
+
+
+    <button
+      class="calc"
+      onclick="discount()"
+    >
+      احسب
+    </button>
+
+
+    <div
+      class="result"
+      id="discResult"
+    ></div>
+
+  </div>
+
 </div>
 
-<div class="card" data-cat="money" data-name="تقسيم الفاتورة الحساب" onclick="openCalc('split')">
- <div class="emoji">🧾</div><h3>تقسيم الفاتورة</h3><p>قسّم الحساب على الأشخاص</p>
+
+
+<!-- تقسيم الفاتورة -->
+
+<div
+  class="card"
+  data-cat="money"
+  data-name="تقسيم الفاتورة"
+>
+
+  <div class="icon">
+    🧾
+  </div>
+
+  <h2>
+    تقسيم الفاتورة
+  </h2>
+
+  <p>
+    اقسم الحساب على عدد الأشخاص
+  </p>
+
+  <div class="form">
+
+    <div class="field">
+
+      <label>
+        قيمة الفاتورة
+      </label>
+
+      <input
+        id="bill"
+        type="number"
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        عدد الأشخاص
+      </label>
+
+      <input
+        id="people"
+        type="number"
+      >
+
+    </div>
+
+
+    <button
+      class="calc"
+      onclick="splitBill()"
+    >
+      احسب
+    </button>
+
+
+    <div
+      class="result"
+      id="billResult"
+    ></div>
+
+  </div>
+
 </div>
 
-<div class="card" data-cat="money" data-name="القسط التقسيط" onclick="openCalc('installment')">
- <div class="emoji">💳</div><h3>القسط</h3><p>احسب قيمة القسط الشهري</p>
+
+
+<!-- التقسيط -->
+
+<div
+  class="card"
+  data-cat="money"
+  data-name="حاسبة التقسيط"
+>
+
+  <div class="icon">
+    💳
+  </div>
+
+  <h2>
+    حاسبة التقسيط
+  </h2>
+
+  <p>
+    احسب القسط الشهري بدون فوائد
+  </p>
+
+  <div class="form">
+
+    <div class="field">
+
+      <label>
+        المبلغ
+      </label>
+
+      <input
+        id="loan"
+        type="number"
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        عدد الشهور
+      </label>
+
+      <input
+        id="months"
+        type="number"
+      >
+
+    </div>
+
+
+    <button
+      class="calc"
+      onclick="installment()"
+    >
+      احسب
+    </button>
+
+
+    <div
+      class="result"
+      id="loanResult"
+    ></div>
+
+  </div>
+
 </div>
 
-<div class="card" data-cat="money" data-name="العملات الدولار اليورو ريال" onclick="openCalc('currency')">
- <div class="emoji">💱</div><h3>تحويل العملات</h3><p>حوّل العملات يدويًا</p>
+
+
+<!-- الدرجات -->
+
+<div
+  class="card"
+  data-cat="study"
+  data-name="حاسبة الدرجات"
+>
+
+  <div class="icon">
+    🎓
+  </div>
+
+  <h2>
+    حاسبة الدرجات
+  </h2>
+
+  <p>
+    احسب النسبة المئوية للدرجات
+  </p>
+
+  <div class="form">
+
+    <div class="field">
+
+      <label>
+        درجتك
+      </label>
+
+      <input
+        id="grade"
+        type="number"
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        الدرجة النهائية
+      </label>
+
+      <input
+        id="maxGrade"
+        type="number"
+      >
+
+    </div>
+
+
+    <button
+      class="calc"
+      onclick="grades()"
+    >
+      احسب
+    </button>
+
+
+    <div
+      class="result"
+      id="gradeResult"
+    ></div>
+
+  </div>
+
 </div>
 
-<div class="card" data-cat="daily" data-name="الكهرباء فاتورة كهرباء" onclick="openCalc('electric')">
- <div class="emoji">💡</div><h3>الكهرباء</h3><p>تقدير استهلاك الكهرباء</p>
+
+
+<!-- العمر -->
+
+<div
+  class="card"
+  data-cat="daily"
+  data-name="حاسبة العمر"
+>
+
+  <div class="icon">
+    🎂
+  </div>
+
+  <h2>
+    حاسبة العمر
+  </h2>
+
+  <p>
+    اعرف عمرك بالسنوات
+  </p>
+
+  <div class="form">
+
+    <div class="field">
+
+      <label>
+        تاريخ الميلاد
+      </label>
+
+      <input
+        id="birth"
+        type="date"
+      >
+
+    </div>
+
+
+    <button
+      class="calc"
+      onclick="ageCalc()"
+    >
+      احسب
+    </button>
+
+
+    <div
+      class="result"
+      id="ageResult"
+    ></div>
+
+  </div>
+
 </div>
 
-<div class="card" data-cat="study" data-name="الدرجات النتيجة المجموع" onclick="openCalc('grades')">
- <div class="emoji">🎓</div><h3>الدرجات</h3><p>احسب النسبة والنتيجة</p>
+
+
+<!-- الوقت -->
+
+<div
+  class="card"
+  data-cat="daily"
+  data-name="حاسبة الوقت"
+>
+
+  <div class="icon">
+    ⏱️
+  </div>
+
+  <h2>
+    حاسبة الوقت
+  </h2>
+
+  <p>
+    حوّل الساعات والدقائق إلى دقائق
+  </p>
+
+  <div class="form">
+
+    <div class="field">
+
+      <label>
+        الساعات
+      </label>
+
+      <input
+        id="hours"
+        type="number"
+        value="0"
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        الدقائق
+      </label>
+
+      <input
+        id="mins"
+        type="number"
+        value="0"
+      >
+
+    </div>
+
+
+    <button
+      class="calc"
+      onclick="timeCalc()"
+    >
+      احسب
+    </button>
+
+
+    <div
+      class="result"
+      id="timeResult"
+    ></div>
+
+  </div>
+
 </div>
 
-<div class="card" data-cat="daily" data-name="المساحة المربع المستطيل" onclick="openCalc('area')">
- <div class="emoji">📐</div><h3>المساحة</h3><p>احسب مساحة الأشكال</p>
-</div>
-
-<div class="card" data-cat="daily" data-name="تحويل الوحدات متر كيلو" onclick="openCalc('units')">
- <div class="emoji">📏</div><h3>تحويل الوحدات</h3><p>متر وكيلومتر وسنتيمتر</p>
-</div>
-
-<div class="card" data-cat="health" data-name="العمر تاريخ الميلاد" onclick="openCalc('age')">
- <div class="emoji">🎂</div><h3>حساب العمر</h3><p>اعرف عمرك بالسنوات</p>
-</div>
-
-<div class="card" data-cat="money" data-name="الضريبة ضريبة" onclick="openCalc('tax')">
- <div class="emoji">💵</div><h3>الضريبة</h3><p>احسب قيمة الضريبة</p>
-</div>
 
 </main>
 
-<!-- CALCULATORS -->
-
-<div class="calculator" id="fuel">
-<div class="calcbox">
-<button class="back" onclick="closeCalc()">← رجوع</button>
-<h2>⛽ حاسبة البنزين</h2>
-
-<label>نوع الوقود</label>
-<select id="fuelType">
-<option value="20.75">بنزين 80 — 20.75 جنيه</option>
-<option value="22.25">بنزين 92 — 22.25 جنيه</option>
-<option value="24">بنزين 95 — 24 جنيه</option>
-<option value="20.50">سولار — 20.50 جنيه</option>
-</select>
-
-<label>المسافة بالكيلومتر</label>
-<input id="fuelDistance" type="number" placeholder="مثال: 150">
-
-<label>استهلاك السيارة (كم لكل لتر)</label>
-<input id="fuelConsumption" type="number" step="0.1" placeholder="مثال: 12">
-
-<button class="calculate" onclick="calcFuel()">احسب</button>
-<div class="result" id="fuelResult">النتيجة ستظهر هنا</div>
-<div class="note">الأسعار المضمنة هي أسعار مرجعية ويمكن تحديثها لاحقًا من مصدر رسمي.</div>
-</div>
-</div>
-
-<div class="calculator" id="percent">
-<div class="calcbox">
-<button class="back" onclick="closeCalc()">← رجوع</button>
-<h2>📊 النسبة المئوية</h2>
-<label>الرقم</label><input id="pNum" type="number">
-<label>النسبة %</label><input id="pRate" type="number">
-<button class="calculate" onclick="calcPercent()">احسب</button>
-<div class="result" id="percentResult">النتيجة ستظهر هنا</div>
-</div>
-</div>
-
-<div class="calculator" id="discount">
-<div class="calcbox">
-<button class="back" onclick="closeCalc()">← رجوع</button>
-<h2>🏷️ حاسبة الخصم</h2>
-<label>السعر الأصلي</label><input id="dPrice" type="number">
-<label>نسبة الخصم %</label><input id="dRate" type="number">
-<button class="calculate" onclick="calcDiscount()">احسب</button>
-<div class="result" id="discountResult">النتيجة ستظهر هنا</div>
-</div>
-</div>
-
-<div class="calculator" id="split">
-<div class="calcbox">
-<button class="back" onclick="closeCalc()">← رجوع</button>
-<h2>🧾 تقسيم الفاتورة</h2>
-<label>قيمة الفاتورة</label><input id="sBill" type="number">
-<label>عدد الأشخاص</label><input id="sPeople" type="number">
-<button class="calculate" onclick="calcSplit()">احسب</button>
-<div class="result" id="splitResult">النتيجة ستظهر هنا</div>
-</div>
-</div>
-
-<div class="calculator" id="installment">
-<div class="calcbox">
-<button class="back" onclick="closeCalc()">← رجوع</button>
-<h2>💳 حاسبة القسط</h2>
-<label>السعر الإجمالي</label><input id="iPrice" type="number">
-<label>المقدم</label><input id="iDown" type="number" value="0">
-<label>عدد الشهور</label><input id="iMonths" type="number">
-<label>الفائدة %</label><input id="iInterest" type="number" value="0">
-<button class="calculate" onclick="calcInstallment()">احسب</button>
-<div class="result" id="installmentResult">النتيجة ستظهر هنا</div>
-</div>
-</div>
-
-<div class="calculator" id="currency">
-<div class="calcbox">
-<button class="back" onclick="closeCalc()">← رجوع</button>
-<h2>💱 تحويل العملات</h2>
-<label>المبلغ</label><input id="cAmount" type="number">
-<label>سعر العملة مقابل الجنيه</label><input id="cRate" type="number" step="0.0001" placeholder="مثال: 48">
-<button class="calculate" onclick="calcCurrency()">احسب</button>
-<div class="result" id="currencyResult">النتيجة ستظهر هنا</div>
-<div class="note">سعر الصرف يتغير باستمرار؛ أدخل السعر الحالي للحصول على نتيجة دقيقة.</div>
-</div>
-</div>
-
-<div class="calculator" id="electric">
-<div class="calcbox">
-<button class="back" onclick="closeCalc()">← رجوع</button>
-<h2>💡 حاسبة الكهرباء</h2>
-<label>الاستهلاك بالكيلووات ساعة</label>
-<input id="eKwh" type="number" placeholder="مثال: 250">
-<button class="calculate" onclick="calcElectric()">احسب</button>
-<div class="result" id="electricResult">النتيجة ستظهر هنا</div>
-<div class="note">التكلفة تقديرية وقد تختلف الفاتورة الفعلية بسبب الرسوم والمكونات الأخرى.</div>
-</div>
-</div>
-
-<div class="calculator" id="grades">
-<div class="calcbox">
-<button class="back" onclick="closeCalc()">← رجوع</button>
-<h2>🎓 حاسبة الدرجات</h2>
-<label>درجتك</label><input id="gGot" type="number">
-<label>الدرجة النهائية</label><input id="gTotal" type="number">
-<button class="calculate" onclick="calcGrades()">احسب</button>
-<div class="result" id="gradesResult">النتيجة ستظهر هنا</div>
-</div>
-</div>
-
-<div class="calculator" id="area">
-<div class="calcbox">
-<button class="back" onclick="closeCalc()">← رجوع</button>
-<h2>📐 حاسبة المساحة</h2>
-<label>الشكل</label>
-<select id="areaType" onchange="areaFields()">
-<option value="rect">مستطيل</option>
-<option value="square">مربع</option>
-<option value="triangle">مثلث</option>
-<option value="circle">دائرة</option>
-</select>
-<div id="areaInputs"></div>
-<button class="calculate" onclick="calcArea()">احسب</button>
-<div class="result" id="areaResult">النتيجة ستظهر هنا</div>
-</div>
-</div>
-
-<div class="calculator" id="units">
-<div class="calcbox">
-<button class="back" onclick="closeCalc()">← رجوع</button>
-<h2>📏 تحويل الوحدات</h2>
-<label>القيمة</label><input id="uValue" type="number">
-<label>من</label>
-<select id="uFrom">
-<option value="m">متر</option>
-<option value="km">كيلومتر</option>
-<option value="cm">سنتيمتر</option>
-<option value="mm">مليمتر</option>
-</select>
-<label>إلى</label>
-<select id="uTo">
-<option value="m">متر</option>
-<option value="km">كيلومتر</option>
-<option value="cm">سنتيمتر</option>
-<option value="mm">مليمتر</option>
-</select>
-<button class="calculate" onclick="calcUnits()">احسب</button>
-<div class="result" id="unitsResult">النتيجة ستظهر هنا</div>
-</div>
-</div>
-
-<div class="calculator" id="age">
-<div class="calcbox">
-<button class="back" onclick="closeCalc()">← رجوع</button>
-<h2>🎂 حاسبة العمر</h2>
-<label>تاريخ الميلاد</label><input id="birth" type="date">
-<button class="calculate" onclick="calcAge()">احسب</button>
-<div class="result" id="ageResult">النتيجة ستظهر هنا</div>
-</div>
-</div>
-
-<div class="calculator" id="tax">
-<div class="calcbox">
-<button class="back" onclick="closeCalc()">← رجوع</button>
-<h2>💵 حاسبة الضريبة</h2>
-<label>المبلغ</label><input id="tAmount" type="number">
-<label>نسبة الضريبة %</label><input id="tRate" type="number" value="14">
-<button class="calculate" onclick="calcTax()">احسب</button>
-<div class="result" id="taxResult">النتيجة ستظهر هنا</div>
-</div>
-</div>
 
 <footer>
-<p>🧮 احسبها لي</p>
-<p>حاسبات مجانية وسريعة</p>
-<p style="margin-top:8px">© 2026 احسبها لي</p>
+
+  © 2026 احسبها لي — كل الحاسبات في مكان واحد
+
 </footer>
+
+
 
 <script>
 
-function openCalc(id){
- document.querySelectorAll(".calculator").forEach(x=>x.style.display="none");
- document.getElementById("grid").style.display="none";
- document.querySelector(".categories").style.display="none";
- document.querySelector(".hero").style.display="none";
- document.getElementById(id).style.display="block";
- window.scrollTo(0,0);
+const $ = id =>
+  document.getElementById(id);
 
- if(id==="area") areaFields();
+const n = id =>
+  Number($(id).value);
+
+const out = (id,text) =>
+  $(id).textContent = text;
+
+
+
+/* الوضع الداكن */
+
+function toggleTheme(){
+
+  document.body.classList.toggle("dark");
+
+  localStorage.setItem(
+    "dark",
+    document.body.classList.contains("dark")
+  );
+
 }
 
-function closeCalc(){
- document.querySelectorAll(".calculator").forEach(x=>x.style.display="none");
- document.getElementById("grid").style.display="grid";
- document.querySelector(".categories").style.display="flex";
- document.querySelector(".hero").style.display="block";
- window.scrollTo(0,0);
+
+if(
+  localStorage.getItem("dark") === "true"
+){
+
+  document.body.classList.add("dark");
+
 }
 
-function val(id){
- return Number(document.getElementById(id).value);
+
+
+/* فتح الحاسبة */
+
+document
+.querySelectorAll(".card")
+.forEach(card => {
+
+  card.addEventListener(
+    "click",
+    function(e){
+
+      if(
+        e.target.tagName === "INPUT" ||
+        e.target.tagName === "BUTTON"
+      ){
+        return;
+      }
+
+      this.classList.toggle("open");
+
+    }
+  );
+
+});
+
+
+
+/* حاسبة البنزين */
+
+function fuel(){
+
+  let distance = n("fuelDist");
+
+  let efficiency = n("fuelEff");
+
+  let price = n("fuelPrice");
+
+
+  if(
+    distance > 0 &&
+    efficiency > 0
+  ){
+
+    let liters =
+      distance / efficiency;
+
+    let cost =
+      liters * price;
+
+
+    out(
+      "fuelResult",
+      `الاستهلاك: ${liters.toFixed(2)} لتر — التكلفة: ${cost.toFixed(2)} جنيه`
+    );
+
+  }else{
+
+    out(
+      "fuelResult",
+      "اكتب البيانات بشكل صحيح"
+    );
+
+  }
+
 }
 
-function show(id,text){
- document.getElementById(id).innerHTML=text;
+
+
+/* النسبة */
+
+function pct(){
+
+  let part = n("pctPart");
+
+  let total = n("pctTotal");
+
+
+  if(total > 0){
+
+    let result =
+      (part / total) * 100;
+
+
+    out(
+      "pctResult",
+      `النسبة = ${result.toFixed(2)}%`
+    );
+
+  }else{
+
+    out(
+      "pctResult",
+      "اكتب الكل أكبر من صفر"
+    );
+
+  }
+
 }
 
-function calcFuel(){
- let distance=val("fuelDistance");
- let consumption=val("fuelConsumption");
- let price=val("fuelType");
 
- if(distance<=0||consumption<=0){
-  show("fuelResult","⚠️ اكتب المسافة والاستهلاك بشكل صحيح");
-  return;
- }
 
- let liters=distance/consumption;
- let cost=liters*price;
+/* الخصم */
 
- show("fuelResult",
- `⛽ كمية الوقود: ${liters.toFixed(2)} لتر<br>
- 💰 تكلفة الرحلة: ${cost.toFixed(2)} جنيه`);
+function discount(){
+
+  let price =
+    n("discPrice");
+
+  let percent =
+    n("discPct");
+
+
+  let discountValue =
+    price * percent / 100;
+
+  let finalPrice =
+    price - discountValue;
+
+
+  out(
+    "discResult",
+    `قيمة الخصم: ${discountValue.toFixed(2)} جنيه — السعر بعد الخصم: ${finalPrice.toFixed(2)} جنيه`
+  );
+
 }
 
-function calcPercent(){
- let n=val("pNum"),r=val("pRate");
- if(n<0||r<0){show("percentResult","⚠️ أدخل أرقام صحيحة");return}
- show("percentResult",`${r}% من ${n} = ${(n*r/100).toFixed(2)}`);
+
+
+/* تقسيم الفاتورة */
+
+function splitBill(){
+
+  let bill =
+    n("bill");
+
+  let people =
+    n("people");
+
+
+  if(people > 0){
+
+    let each =
+      bill / people;
+
+
+    out(
+      "billResult",
+      `نصيب الفرد: ${each.toFixed(2)} جنيه`
+    );
+
+  }else{
+
+    out(
+      "billResult",
+      "اكتب عدد الأشخاص"
+    );
+
+  }
+
 }
 
-function calcDiscount(){
- let p=val("dPrice"),r=val("dRate");
- if(p<0||r<0){show("discountResult","⚠️ أدخل أرقام صحيحة");return}
- let discount=p*r/100;
- let final=p-discount;
- show("discountResult",
- `🏷️ قيمة الخصم: ${discount.toFixed(2)} جنيه<br>
- 💰 السعر بعد الخصم: ${final.toFixed(2)} جنيه`);
+
+
+/* التقسيط */
+
+function installment(){
+
+  let loan =
+    n("loan");
+
+  let months =
+    n("months");
+
+
+  if(months > 0){
+
+    let payment =
+      loan / months;
+
+
+    out(
+      "loanResult",
+      `القسط الشهري: ${payment.toFixed(2)} جنيه`
+    );
+
+  }else{
+
+    out(
+      "loanResult",
+      "اكتب عدد الشهور"
+    );
+
+  }
+
 }
 
-function calcSplit(){
- let b=val("sBill"),p=val("sPeople");
- if(b<=0||p<=0){show("splitResult","⚠️ أدخل البيانات بشكل صحيح");return}
- show("splitResult",`👥 نصيب كل شخص: ${(b/p).toFixed(2)} جنيه`);
+
+
+/* الدرجات */
+
+function grades(){
+
+  let grade =
+    n("grade");
+
+  let max =
+    n("maxGrade");
+
+
+  if(max > 0){
+
+    let percentage =
+      grade / max * 100;
+
+
+    out(
+      "gradeResult",
+      `النسبة: ${percentage.toFixed(2)}%`
+    );
+
+  }else{
+
+    out(
+      "gradeResult",
+      "اكتب الدرجة النهائية"
+    );
+
+  }
+
 }
 
-function calcInstallment(){
- let price=val("iPrice");
- let down=val("iDown")||0;
- let months=val("iMonths");
- let interest=val("iInterest")||0;
 
- if(price<=0||months<=0||down<0||down>=price){
-  show("installmentResult","⚠️ راجع البيانات");
-  return;
- }
 
- let remain=price-down;
- let interestValue=remain*interest/100;
- let total=remain+interestValue;
- let monthly=total/months;
+/* العمر */
 
- show("installmentResult",
- `💰 المبلغ بعد المقدم: ${remain.toFixed(2)} جنيه<br>
- 📈 قيمة الفائدة: ${interestValue.toFixed(2)} جنيه<br>
- 💵 إجمالي التقسيط: ${total.toFixed(2)} جنيه<br>
- 📅 القسط الشهري: ${monthly.toFixed(2)} جنيه`);
+function ageCalc(){
+
+  let birth =
+    new Date(
+      $("birth").value
+    );
+
+  let today =
+    new Date();
+
+
+  if(isNaN(birth)){
+
+    out(
+      "ageResult",
+      "اختار تاريخ الميلاد"
+    );
+
+    return;
+
+  }
+
+
+  let age =
+    today.getFullYear() -
+    birth.getFullYear();
+
+
+  let month =
+    today.getMonth() -
+    birth.getMonth();
+
+
+  if(
+    month < 0 ||
+    (
+      month === 0 &&
+      today.getDate() < birth.getDate()
+    )
+  ){
+
+    age--;
+
+  }
+
+
+  out(
+    "ageResult",
+    `عمرك: ${age} سنة`
+  );
+
 }
 
-function calcCurrency(){
- let amount=val("cAmount"),rate=val("cRate");
 
- if(amount<=0||rate<=0){
-  show("currencyResult","⚠️ أدخل المبلغ وسعر الصرف");
-  return;
- }
 
- show("currencyResult",
- `${amount} × ${rate} = <strong>${(amount*rate).toFixed(2)} جنيه</strong>`);
+/* الوقت */
+
+function timeCalc(){
+
+  let hours =
+    n("hours");
+
+  let minutes =
+    n("mins");
+
+
+  let total =
+    hours * 60 + minutes;
+
+
+  out(
+    "timeResult",
+    `الإجمالي: ${total} دقيقة`
+  );
+
 }
 
-function calcElectric(){
- let k=val("eKwh");
 
- if(k<=0){
-  show("electricResult","⚠️ أدخل الاستهلاك");
-  return;
- }
 
- let remaining=k;
- let cost=0;
+/* التصنيفات */
 
- let tiers=[
-  [50,.68],
-  [50,.78],
-  [100,.95],
-  [150,1.55],
-  [300,1.95],
-  [350,2.10],
-  [Infinity,2.58]
- ];
+function filterTools(
+  category,
+  button
+){
 
- for(let t of tiers){
-  let amount=Math.min(remaining,t[0]);
-  cost+=amount*t[1];
-  remaining-=amount;
-  if(remaining<=0)break;
- }
+  document
+  .querySelectorAll(".cat")
+  .forEach(
+    x => x.classList.remove("active")
+  );
 
- show("electricResult",
- `⚡ الاستهلاك: ${k} كيلووات ساعة<br>
- 💡 التكلفة الأساسية التقريبية: ${cost.toFixed(2)} جنيه`);
+
+  button.classList.add("active");
+
+
+  document
+  .querySelectorAll(".card")
+  .forEach(card => {
+
+    if(
+      category === "all" ||
+      card.dataset.cat === category
+    ){
+
+      card.style.display =
+        "block";
+
+    }else{
+
+      card.style.display =
+        "none";
+
+    }
+
+  });
+
 }
 
-function calcGrades(){
- let got=val("gGot"),total=val("gTotal");
 
- if(got<0||total<=0||got>total){
-  show("gradesResult","⚠️ راجع الدرجات");
-  return;
- }
 
- let percent=got/total*100;
-
- show("gradesResult",
- `🎓 النسبة: ${percent.toFixed(2)}%<br>
- 📝 الدرجة: ${got} من ${total}`);
-}
-
-function areaFields(){
- let type=document.getElementById("areaType").value;
- let box=document.getElementById("areaInputs");
-
- if(type==="rect"){
-  box.innerHTML=`
-  <label>الطول</label><input id="a1" type="number">
-  <label>العرض</label><input id="a2" type="number">`;
- }
-
- if(type==="square"){
-  box.innerHTML=`
-  <label>طول الضلع</label><input id="a1" type="number">`;
- }
-
- if(type==="triangle"){
-  box.innerHTML=`
-  <label>القاعدة</label><input id="a1" type="number">
-  <label>الارتفاع</label><input id="a2" type="number">`;
- }
-
- if(type==="circle"){
-  box.innerHTML=`
-  <label>نصف القطر</label><input id="a1" type="number">`;
- }
-}
-
-function calcArea(){
- let type=document.getElementById("areaType").value;
- let a=Number(document.getElementById("a1").value);
- let b=document.getElementById("a2")?Number(document.getElementById("a2").value):0;
- let area=0;
-
- if(a<=0||(type==="rect"||type==="triangle")&&b<=0){
-  show("areaResult","⚠️ أدخل القيم");
-  return;
- }
-
- if(type==="rect")area=a*b;
- if(type==="square")area=a*a;
- if(type==="triangle")area=a*b/2;
- if(type==="circle")area=Math.PI*a*a;
-
- show("areaResult",`📐 المساحة = ${area.toFixed(2)} وحدة²`);
-}
-
-function calcUnits(){
- let v=val("uValue");
- let from=document.getElementById("uFrom").value;
- let to=document.getElementById("uTo").value;
-
- let meter={
-  m:1,
-  km:1000,
-  cm:.01,
-  mm:.001
- };
-
- if(v<0){
-  show("unitsResult","⚠️ أدخل قيمة صحيحة");
-  return;
- }
-
- let result=v*meter[from]/meter[to];
-
- show("unitsResult",`📏 النتيجة = ${result.toLocaleString("ar-EG")}`);
-}
-
-function calcAge(){
- let birth=document.getElementById("birth").value;
-
- if(!birth){
-  show("ageResult","⚠️ اختر تاريخ الميلاد");
-  return;
- }
-
- let b=new Date(birth);
- let now=new Date();
-
- let age=now.getFullYear()-b.getFullYear();
- let month=now.getMonth()-b.getMonth();
-
- if(month<0||(month===0&&now.getDate()<b.getDate()))age--;
-
- if(age<0){
-  show("ageResult","⚠️ التاريخ غير صحيح");
-  return;
- }
-
- show("ageResult",`🎂 عمرك الآن تقريبًا: ${age} سنة`);
-}
-
-function calcTax(){
- let amount=val("tAmount");
- let rate=val("tRate");
-
- if(amount<0||rate<0){
-  show("taxResult","⚠️ أدخل أرقام صحيحة");
-  return;
- }
-
- let tax=amount*rate/100;
- let total=amount+tax;
-
- show("taxResult",
- `💵 قيمة الضريبة: ${tax.toFixed(2)} جنيه<br>
- 💰 الإجمالي بعد الضريبة: ${total.toFixed(2)} جنيه`);
-}
+/* البحث */
 
 function searchTools(){
- let q=document.getElementById("search").value.trim().toLowerCase();
 
- document.querySelectorAll(".card").forEach(card=>{
-  let name=card.dataset.name.toLowerCase();
-  card.style.display=name.includes(q)?"block":"none";
- });
-}
+  let query =
+    $("search")
+    .value
+    .toLowerCase()
+    .trim();
 
-function filterCat(cat,button){
- document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));
- button.classList.add("active");
 
- document.querySelectorAll(".card").forEach(card=>{
-  card.style.display=
-   cat==="all"||card.dataset.cat===cat
-   ?"block":"none";
- });
-}
+  document
+  .querySelectorAll(".card")
+  .forEach(card => {
 
-function toggleDark(){
- document.body.classList.toggle("dark");
+    let name =
+      card.dataset.name
+      .toLowerCase();
 
- let dark=document.body.classList.contains("dark");
 
- localStorage.setItem("darkMode",dark?"1":"0");
+    if(
+      name.includes(query)
+    ){
 
- document.getElementById("darkBtn").textContent=
- dark?"☀️":"🌙";
-}
+      card.style.display =
+        "block";
 
-if(localStorage.getItem("darkMode")==="1"){
- document.body.classList.add("dark");
- document.getElementById("darkBtn").textContent="☀️";
+    }else{
+
+      card.style.display =
+        "none";
+
+    }
+
+  });
+
 }
 
 </script>
