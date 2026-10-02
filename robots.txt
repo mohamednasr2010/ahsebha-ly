@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mohamednasr2010.github.io/ahsebha-ly/sitemap.xml
