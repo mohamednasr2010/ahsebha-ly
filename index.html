@@ -4,272 +4,299 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="احسبها لي - حاسبات مجانية وسهلة للفلوس والدراسة والحياة اليومية.">
+<title>احسبها لي | حاسبات وتحويل وحدات أونلاين</title>
+
+<meta name="description" content="احسبها لي - موقع مجاني للحسابات وتحويل وحدات القياس والعملات والنسب والخصومات والعمر والوقت والكهرباء والبنزين والمزيد.">
+<meta name="keywords" content="حاسبة, حاسبة اونلاين, تحويل وحدات, محول وحدات, نسبة مئوية, خصم, عمر, وقت, بنزين, كهرباء, عملات">
+<meta name="robots" content="index, follow">
 <meta name="theme-color" content="#2563eb">
 
-<title>احسبها لي | كل الحاسبات في مكان واحد</title>
+<!-- Google Search Console:
+ضع كود التحقق من جوجل هنا لاحقًا إذا أعطاك جوجل كودًا -->
+
+<meta property="og:title" content="احسبها لي | حاسبات وتحويل وحدات">
+<meta property="og:description" content="حاسبات وأدوات مجانية للحساب والتحويل أونلاين.">
+<meta property="og:type" content="website">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"احسبها لي",
+  "description":"موقع مجاني للحسابات وتحويل وحدات القياس والعملات.",
+  "applicationCategory":"UtilitiesApplication",
+  "operatingSystem":"All"
+}
+</script>
 
 <style>
 *{
   box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-  margin:0;
-  font-family:Arial,Tahoma,sans-serif;
-  background:#f4f7fb;
+  font-family:Arial,"Tahoma",sans-serif;
+  background:#f5f7fb;
   color:#172033;
+  line-height:1.7;
   transition:.25s;
 }
 
 body.dark{
   background:#101827;
-  color:#f5f7fb;
+  color:#f1f5f9;
 }
 
 header{
-  height:80px;
-  background:#fff;
+  background:#2563eb;
+  color:white;
+  padding:14px 5%;
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  padding:0 25px;
-  border-bottom:1px solid #e5e7eb;
+  align-items:center;
   position:sticky;
   top:0;
-  z-index:5;
-}
-
-.dark header{
-  background:#172033;
-  border-color:#263247;
+  z-index:1000;
+  box-shadow:0 2px 10px #0002;
 }
 
 .logo{
-  font-size:27px;
-  font-weight:800;
-  color:#2563eb;
+  font-size:22px;
+  font-weight:bold;
 }
 
-.theme{
-  width:54px;
-  height:44px;
-  border:1px solid #ddd;
-  border-radius:14px;
-  background:#fff;
+.header-actions{
+  display:flex;
+  gap:8px;
+}
+
+.header-btn{
+  border:0;
+  border-radius:10px;
+  padding:9px 13px;
   cursor:pointer;
-  font-size:23px;
-}
-
-.dark .theme{
-  background:#202b3e;
-  color:#fff;
-  border-color:#3b4659;
+  background:white;
+  color:#2563eb;
+  font-size:15px;
 }
 
 .hero{
   text-align:center;
-  padding:55px 15px 25px;
+  padding:55px 15px 35px;
+  background:linear-gradient(135deg,#2563eb,#4f46e5);
+  color:white;
 }
 
 .hero h1{
-  font-size:48px;
-  margin:0 0 14px;
+  font-size:38px;
+  margin-bottom:10px;
 }
 
 .hero p{
-  font-size:20px;
-  color:#667085;
-  margin:0 0 25px;
-}
-
-.dark .hero p{
-  color:#aab4c5;
+  opacity:.95;
+  margin-bottom:22px;
 }
 
 .search{
-  width:min(650px,94%);
-  padding:18px 22px;
-  border-radius:22px;
-  border:1px solid #dfe4ec;
-  background:#fff;
-  outline:none;
-  font-size:18px;
+  width:min(700px,95%);
+  padding:15px 18px;
+  border:0;
+  border-radius:14px;
+  outline:0;
+  font-size:16px;
 }
 
-.dark .search{
-  background:#182235;
-  color:#fff;
-  border-color:#344057;
+.container{
+  width:min(1150px,94%);
+  margin:auto;
 }
 
 .categories{
   display:flex;
-  gap:10px;
-  overflow-x:auto;
-  padding:8px 18px 25px;
+  gap:8px;
+  flex-wrap:wrap;
   justify-content:center;
+  padding:25px 0;
 }
 
-.cat{
-  border:1px solid #e1e6ee;
-  background:#fff;
-  border-radius:22px;
-  padding:11px 22px;
-  white-space:nowrap;
+.category{
+  border:0;
+  background:white;
+  color:#172033;
+  padding:10px 16px;
+  border-radius:20px;
   cursor:pointer;
+  box-shadow:0 2px 8px #0001;
 }
 
-.cat.active{
+body.dark .category{
+  background:#1e293b;
+  color:white;
+}
+
+.category.active{
   background:#2563eb;
-  color:#fff;
-  border-color:#2563eb;
-}
-
-.dark .cat{
-  background:#1a2638;
-  color:#fff;
-  border-color:#334056;
+  color:white;
 }
 
 .grid{
-  max-width:1000px;
-  margin:auto;
-  padding:0 18px 55px;
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:20px;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  padding-bottom:35px;
 }
 
 .card{
-  background:#fff;
-  border:1px solid #e3e7ee;
-  border-radius:25px;
-  padding:25px;
-  box-shadow:0 5px 20px #16213d0d;
-  cursor:pointer;
+  background:white;
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 5px 18px #00000012;
 }
 
-.dark .card{
-  background:#182235;
-  border-color:#2c3950;
-}
-
-.icon{
-  font-size:38px;
+body.dark .card{
+  background:#172235;
+  box-shadow:none;
 }
 
 .card h2{
-  margin:8px 0;
-  font-size:25px;
+  font-size:20px;
+  margin-bottom:8px;
 }
 
 .card p{
-  color:#667085;
-  margin:0 0 15px;
+  color:#64748b;
+  font-size:14px;
+  margin-bottom:15px;
 }
 
-.dark .card p{
-  color:#aab4c5;
+body.dark .card p{
+  color:#b6c2d2;
 }
 
-.form{
-  display:none;
-  border-top:1px solid #eee;
-  margin-top:15px;
-  padding-top:15px;
-  cursor:default;
-}
-
-.card.open .form{
+label{
   display:block;
-}
-
-.field{
-  margin:10px 0;
-}
-
-.field label{
-  display:block;
-  margin-bottom:6px;
+  margin:9px 0 5px;
   font-weight:bold;
+  font-size:14px;
 }
 
-.field input{
+input,select{
   width:100%;
-  padding:12px;
-  border:1px solid #d5dae3;
-  border-radius:11px;
-  background:#fff;
+  padding:11px;
+  border:1px solid #d5dce8;
+  border-radius:10px;
+  background:white;
+  color:#172033;
+  font-size:15px;
+  outline:none;
 }
 
-.dark .field input{
-  background:#101827;
-  color:#fff;
-  border-color:#3a465b;
+body.dark input,
+body.dark select{
+  background:#0f172a;
+  color:white;
+  border-color:#334155;
 }
 
-.calc{
+button.calculate{
   width:100%;
   border:0;
-  border-radius:12px;
   padding:12px;
+  margin-top:12px;
+  border-radius:10px;
   background:#2563eb;
-  color:#fff;
+  color:white;
   cursor:pointer;
-  margin-top:5px;
+  font-size:16px;
 }
 
 .result{
   margin-top:12px;
   padding:12px;
-  border-radius:11px;
-  background:#eef5ff;
-  color:#174ea6;
+  border-radius:10px;
+  background:#eff6ff;
+  color:#1d4ed8;
   font-weight:bold;
   min-height:20px;
 }
 
-.dark .result{
-  background:#132b4f;
-  color:#b9d5ff;
+body.dark .result{
+  background:#172554;
+  color:#bfdbfe;
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+.converter-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.ad-box{
+  min-height:90px;
+  margin:15px 0;
+  border:1px dashed #94a3b8;
+  border-radius:12px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#64748b;
+  font-size:13px;
 }
 
 footer{
+  background:#111827;
+  color:#cbd5e1;
   text-align:center;
-  padding:25px;
-  color:#667085;
+  padding:30px 15px;
+  margin-top:25px;
 }
 
-@media(max-width:700px){
+.hidden{
+  display:none!important;
+}
 
-  header{
-    padding:0 16px;
+.small{
+  font-size:12px;
+  color:#64748b;
+  margin-top:6px;
+}
+
+@media(max-width:850px){
+  .grid{
+    grid-template-columns:repeat(2,1fr);
   }
+}
 
-  .logo{
-    font-size:22px;
-  }
-
-  .hero{
-    padding-top:40px;
-  }
-
+@media(max-width:600px){
   .hero h1{
-    font-size:39px;
-  }
-
-  .hero p{
-    font-size:18px;
+    font-size:29px;
   }
 
   .grid{
     grid-template-columns:1fr;
-    padding:0 14px 45px;
   }
 
-  .categories{
-    justify-content:flex-start;
+  .converter-row{
+    grid-template-columns:1fr;
+  }
+
+  header{
+    padding:12px 3%;
+  }
+
+  .logo{
+    font-size:18px;
   }
 }
 </style>
@@ -278,1057 +305,781 @@ footer{
 <body>
 
 <header>
+  <div class="logo">🧮 احسبها لي</div>
 
-  <div class="logo">
-    🧮 احسبها لي
+  <div class="header-actions">
+    <button class="header-btn" onclick="toggleDark()">🌙</button>
   </div>
-
-  <button class="theme" onclick="toggleTheme()">
-    🌙
-  </button>
-
 </header>
 
-
 <section class="hero">
-
-  <h1>
-    احسبها لي
-  </h1>
-
-  <p>
-    كل الحاسبات اللي محتاجها في مكان واحد
-  </p>
-
+  <h1>احسبها لي</h1>
+  <p>حاسبات وتحويل وحدات وأدوات مفيدة في مكان واحد</p>
   <input
     id="search"
     class="search"
-    placeholder="🔎 ابحث عن حاسبة..."
+    type="search"
+    placeholder="ابحث عن حاسبة أو وحدة..."
     oninput="searchTools()"
   >
-
 </section>
 
+<main class="container">
 
-<div class="categories">
-
-  <button
-    class="cat active"
-    onclick="filterTools('all',this)"
-  >
-    الكل
-  </button>
-
-  <button
-    class="cat"
-    onclick="filterTools('money',this)"
-  >
-    💰 فلوس
-  </button>
-
-  <button
-    class="cat"
-    onclick="filterTools('daily',this)"
-  >
-    🏠 يومية
-  </button>
-
-  <button
-    class="cat"
-    onclick="filterTools('study',this)"
-  >
-    🎓 دراسة
-  </button>
-
-</div>
-
-
-<main class="grid">
-
-
-<!-- البنزين -->
-
-<div
-  class="card"
-  data-cat="daily"
-  data-name="حاسبة البنزين"
->
-
-  <div class="icon">
-    ⛽
+  <div class="categories">
+    <button class="category active" onclick="filterTools('all',this)">الكل</button>
+    <button class="category" onclick="filterTools('math',this)">رياضيات</button>
+    <button class="category" onclick="filterTools('money',this)">مال</button>
+    <button class="category" onclick="filterTools('daily',this)">يومي</button>
+    <button class="category" onclick="filterTools('units',this)">الوحدات</button>
+    <button class="category" onclick="filterTools('study',this)">دراسة</button>
   </div>
 
-  <h2>
-    حاسبة البنزين
-  </h2>
-
-  <p>
-    احسب استهلاك وتكلفة الرحلة
-  </p>
-
-  <div class="form">
-
-    <div class="field">
-      <label>
-        المسافة بالكيلومتر
-      </label>
-
-      <input
-        id="fuelDist"
-        type="number"
-      >
-    </div>
-
-
-    <div class="field">
-      <label>
-        استهلاك السيارة (كم/لتر)
-      </label>
-
-      <input
-        id="fuelEff"
-        type="number"
-        value="12"
-      >
-    </div>
-
-
-    <div class="field">
-      <label>
-        سعر اللتر
-      </label>
-
-      <input
-        id="fuelPrice"
-        type="number"
-        value="20"
-      >
-    </div>
-
-
-    <button
-      class="calc"
-      onclick="fuel()"
-    >
-      احسب
-    </button>
-
-    <div
-      class="result"
-      id="fuelResult"
-    ></div>
-
+  <!-- مكان إعلانات -->
+  <div class="ad-box">
+    مكان الإعلان — سيتم ربطه بـ Google AdSense لاحقًا
   </div>
 
-</div>
+  <section class="grid" id="tools">
 
+    <!-- Percentage -->
+    <div class="card tool math" data-name="النسبة المئوية نسبة مئوية">
+      <h2>📊 النسبة المئوية</h2>
+      <p>احسب النسبة، قيمة النسبة، الزيادة والخصم.</p>
 
+      <label>العملية</label>
+      <select id="percentType">
+        <option value="part">نسبة رقم من رقم</option>
+        <option value="value">قيمة نسبة من رقم</option>
+        <option value="increase">زيادة بنسبة</option>
+        <option value="decrease">خصم بنسبة</option>
+      </select>
 
-<!-- النسبة المئوية -->
+      <label>الرقم الأول</label>
+      <input id="percentA" type="number">
 
-<div
-  class="card"
-  data-cat="money"
-  data-name="النسبة المئوية"
->
+      <label>الرقم الثاني / النسبة %</label>
+      <input id="percentB" type="number">
 
-  <div class="icon">
-    📊
-  </div>
-
-  <h2>
-    النسبة المئوية
-  </h2>
-
-  <p>
-    احسب أي نسبة بسهولة
-  </p>
-
-  <div class="form">
-
-    <div class="field">
-      <label>
-        الجزء
-      </label>
-
-      <input
-        id="pctPart"
-        type="number"
-      >
+      <button class="calculate" onclick="calcPercent()">احسب</button>
+      <div class="result" id="percentResult"></div>
     </div>
 
+    <!-- Discount -->
+    <div class="card tool money" data-name="خصم خصومات discount">
+      <h2>💸 حاسبة الخصم</h2>
+      <p>احسب قيمة الخصم والسعر بعد الخصم.</p>
 
-    <div class="field">
-      <label>
-        الكل
-      </label>
+      <label>السعر الأصلي</label>
+      <input id="discountPrice" type="number">
 
-      <input
-        id="pctTotal"
-        type="number"
-      >
+      <label>نسبة الخصم %</label>
+      <input id="discountRate" type="number">
+
+      <button class="calculate" onclick="calcDiscount()">احسب</button>
+      <div class="result" id="discountResult"></div>
     </div>
 
+    <!-- Bill -->
+    <div class="card tool daily money" data-name="تقسيم فاتورة مصاريف">
+      <h2>👥 تقسيم الفاتورة</h2>
+      <p>اقسم الفاتورة بالتساوي بين الأشخاص.</p>
 
-    <button
-      class="calc"
-      onclick="pct()"
-    >
-      احسب
-    </button>
+      <label>قيمة الفاتورة</label>
+      <input id="bill" type="number">
 
-    <div
-      class="result"
-      id="pctResult"
-    ></div>
+      <label>عدد الأشخاص</label>
+      <input id="people" type="number">
 
-  </div>
-
-</div>
-
-
-
-<!-- الخصم -->
-
-<div
-  class="card"
-  data-cat="money"
-  data-name="حاسبة الخصم"
->
-
-  <div class="icon">
-    🏷️
-  </div>
-
-  <h2>
-    حاسبة الخصم
-  </h2>
-
-  <p>
-    اعرف السعر بعد الخصم
-  </p>
-
-  <div class="form">
-
-    <div class="field">
-
-      <label>
-        السعر الأصلي
-      </label>
-
-      <input
-        id="discPrice"
-        type="number"
-      >
-
+      <button class="calculate" onclick="calcBill()">احسب</button>
+      <div class="result" id="billResult"></div>
     </div>
 
+    <!-- Installment -->
+    <div class="card tool money" data-name="قسط أقساط installment">
+      <h2>💳 حاسبة الأقساط</h2>
+      <p>حساب القسط الأساسي بدون فوائد أو رسوم.</p>
 
-    <div class="field">
+      <label>المبلغ</label>
+      <input id="installAmount" type="number">
 
-      <label>
-        نسبة الخصم %
-      </label>
+      <label>عدد الشهور</label>
+      <input id="installMonths" type="number">
 
-      <input
-        id="discPct"
-        type="number"
-      >
-
+      <button class="calculate" onclick="calcInstallment()">احسب</button>
+      <div class="result" id="installResult"></div>
     </div>
 
+    <!-- Fuel -->
+    <div class="card tool daily" data-name="بنزين وقود استهلاك fuel">
+      <h2>⛽ حاسبة البنزين</h2>
+      <p>احسب كمية الوقود والتكلفة التقريبية.</p>
 
-    <button
-      class="calc"
-      onclick="discount()"
-    >
-      احسب
-    </button>
+      <label>المسافة بالكيلومتر</label>
+      <input id="fuelDistance" type="number">
 
+      <label>استهلاك السيارة كم/لتر</label>
+      <input id="fuelEfficiency" type="number">
 
-    <div
-      class="result"
-      id="discResult"
-    ></div>
+      <label>سعر اللتر</label>
+      <input id="fuelPrice" type="number">
 
-  </div>
-
-</div>
-
-
-
-<!-- تقسيم الفاتورة -->
-
-<div
-  class="card"
-  data-cat="money"
-  data-name="تقسيم الفاتورة"
->
-
-  <div class="icon">
-    🧾
-  </div>
-
-  <h2>
-    تقسيم الفاتورة
-  </h2>
-
-  <p>
-    اقسم الحساب على عدد الأشخاص
-  </p>
-
-  <div class="form">
-
-    <div class="field">
-
-      <label>
-        قيمة الفاتورة
-      </label>
-
-      <input
-        id="bill"
-        type="number"
-      >
-
+      <button class="calculate" onclick="calcFuel()">احسب</button>
+      <div class="result" id="fuelResult"></div>
     </div>
 
+    <!-- Electricity -->
+    <div class="card tool money daily" data-name="كهرباء فاتورة كهرباء">
+      <h2>⚡ حاسبة الكهرباء</h2>
+      <p>حساب تقديري حسب سعر الكيلووات الذي تدخله.</p>
 
-    <div class="field">
+      <label>الاستهلاك kWh</label>
+      <input id="electricUsage" type="number">
 
-      <label>
-        عدد الأشخاص
-      </label>
+      <label>سعر الكيلووات</label>
+      <input id="electricPrice" type="number" value="1">
 
-      <input
-        id="people"
-        type="number"
-      >
-
+      <button class="calculate" onclick="calcElectric()">احسب</button>
+      <div class="result" id="electricResult"></div>
     </div>
 
+    <!-- Grades -->
+    <div class="card tool study math" data-name="درجات نتيجة percentage">
+      <h2>🎓 حاسبة الدرجات</h2>
+      <p>احسب النسبة المئوية لدرجاتك.</p>
 
-    <button
-      class="calc"
-      onclick="splitBill()"
-    >
-      احسب
-    </button>
+      <label>درجتك</label>
+      <input id="grade" type="number">
 
+      <label>النهاية العظمى</label>
+      <input id="maxGrade" type="number">
 
-    <div
-      class="result"
-      id="billResult"
-    ></div>
-
-  </div>
-
-</div>
-
-
-
-<!-- التقسيط -->
-
-<div
-  class="card"
-  data-cat="money"
-  data-name="حاسبة التقسيط"
->
-
-  <div class="icon">
-    💳
-  </div>
-
-  <h2>
-    حاسبة التقسيط
-  </h2>
-
-  <p>
-    احسب القسط الشهري بدون فوائد
-  </p>
-
-  <div class="form">
-
-    <div class="field">
-
-      <label>
-        المبلغ
-      </label>
-
-      <input
-        id="loan"
-        type="number"
-      >
-
+      <button class="calculate" onclick="calcGrade()">احسب</button>
+      <div class="result" id="gradeResult"></div>
     </div>
 
+    <!-- Age -->
+    <div class="card tool daily" data-name="العمر تاريخ الميلاد">
+      <h2>📅 حاسبة العمر</h2>
+      <p>احسب عمرك بالسنوات والشهور والأيام تقريبًا.</p>
 
-    <div class="field">
+      <label>تاريخ الميلاد</label>
+      <input id="birthDate" type="date">
 
-      <label>
-        عدد الشهور
-      </label>
-
-      <input
-        id="months"
-        type="number"
-      >
-
+      <button class="calculate" onclick="calcAge()">احسب</button>
+      <div class="result" id="ageResult"></div>
     </div>
 
+    <!-- Time -->
+    <div class="card tool daily" data-name="الوقت دقائق ساعات">
+      <h2>⏱️ تحويل الوقت</h2>
+      <p>حوّل الساعات والدقائق إلى دقائق.</p>
 
-    <button
-      class="calc"
-      onclick="installment()"
-    >
-      احسب
-    </button>
+      <label>الساعات</label>
+      <input id="hours" type="number">
 
+      <label>الدقائق</label>
+      <input id="minutes" type="number">
 
-    <div
-      class="result"
-      id="loanResult"
-    ></div>
-
-  </div>
-
-</div>
-
-
-
-<!-- الدرجات -->
-
-<div
-  class="card"
-  data-cat="study"
-  data-name="حاسبة الدرجات"
->
-
-  <div class="icon">
-    🎓
-  </div>
-
-  <h2>
-    حاسبة الدرجات
-  </h2>
-
-  <p>
-    احسب النسبة المئوية للدرجات
-  </p>
-
-  <div class="form">
-
-    <div class="field">
-
-      <label>
-        درجتك
-      </label>
-
-      <input
-        id="grade"
-        type="number"
-      >
-
+      <button class="calculate" onclick="calcTime()">احسب</button>
+      <div class="result" id="timeResult"></div>
     </div>
 
+    <!-- Currency -->
+    <div class="card tool money" data-name="عملة عملات دولار يورو جنيه">
+      <h2>💰 محول العملات</h2>
+      <p>تحويل العملات باستخدام سعر صرف تدخله يدويًا.</p>
 
-    <div class="field">
+      <label>المبلغ</label>
+      <input id="currencyAmount" type="number">
 
-      <label>
-        الدرجة النهائية
-      </label>
+      <label>سعر العملة مقابل العملة المطلوبة</label>
+      <input id="currencyRate" type="number" placeholder="مثال: 50">
 
-      <input
-        id="maxGrade"
-        type="number"
-      >
+      <button class="calculate" onclick="calcCurrency()">احسب</button>
+      <div class="result" id="currencyResult"></div>
 
+      <div class="small">
+        أسعار العملات تتغير باستمرار، لذلك يمكن تحديث السعر يدويًا.
+      </div>
     </div>
 
+    <!-- Unit Converter -->
+    <div class="card tool units full" data-name="تحويل وحدات محول وحدات قياس">
+      <h2>📐 محول الوحدات الشامل</h2>
+      <p>حوّل بين مجموعة كبيرة من وحدات القياس.</p>
 
-    <button
-      class="calc"
-      onclick="grades()"
-    >
-      احسب
-    </button>
+      <label>نوع الوحدة</label>
+      <select id="unitCategory" onchange="loadUnits()">
+        <option value="length">الطول</option>
+        <option value="mass">الكتلة / الوزن</option>
+        <option value="area">المساحة</option>
+        <option value="volume">الحجم</option>
+        <option value="speed">السرعة</option>
+        <option value="pressure">الضغط</option>
+        <option value="energy">الطاقة</option>
+        <option value="power">القدرة</option>
+        <option value="frequency">التردد</option>
+        <option value="digital">البيانات الرقمية</option>
+        <option value="angle">الزوايا</option>
+        <option value="temperature">درجة الحرارة</option>
+      </select>
 
+      <div class="converter-row">
 
-    <div
-      class="result"
-      id="gradeResult"
-    ></div>
+        <div>
+          <label>من</label>
+          <select id="unitFrom"></select>
+        </div>
 
-  </div>
+        <div>
+          <label>إلى</label>
+          <select id="unitTo"></select>
+        </div>
 
-</div>
+      </div>
 
+      <label>القيمة</label>
+      <input id="unitValue" type="number">
 
+      <button class="calculate" onclick="convertUnit()">تحويل</button>
 
-<!-- العمر -->
-
-<div
-  class="card"
-  data-cat="daily"
-  data-name="حاسبة العمر"
->
-
-  <div class="icon">
-    🎂
-  </div>
-
-  <h2>
-    حاسبة العمر
-  </h2>
-
-  <p>
-    اعرف عمرك بالسنوات
-  </p>
-
-  <div class="form">
-
-    <div class="field">
-
-      <label>
-        تاريخ الميلاد
-      </label>
-
-      <input
-        id="birth"
-        type="date"
-      >
-
+      <div class="result" id="unitResult"></div>
     </div>
 
+  </section>
 
-    <button
-      class="calc"
-      onclick="ageCalc()"
-    >
-      احسب
-    </button>
-
-
-    <div
-      class="result"
-      id="ageResult"
-    ></div>
-
+  <!-- مكان إعلانات -->
+  <div class="ad-box">
+    مكان إعلان إضافي
   </div>
-
-</div>
-
-
-
-<!-- الوقت -->
-
-<div
-  class="card"
-  data-cat="daily"
-  data-name="حاسبة الوقت"
->
-
-  <div class="icon">
-    ⏱️
-  </div>
-
-  <h2>
-    حاسبة الوقت
-  </h2>
-
-  <p>
-    حوّل الساعات والدقائق إلى دقائق
-  </p>
-
-  <div class="form">
-
-    <div class="field">
-
-      <label>
-        الساعات
-      </label>
-
-      <input
-        id="hours"
-        type="number"
-        value="0"
-      >
-
-    </div>
-
-
-    <div class="field">
-
-      <label>
-        الدقائق
-      </label>
-
-      <input
-        id="mins"
-        type="number"
-        value="0"
-      >
-
-    </div>
-
-
-    <button
-      class="calc"
-      onclick="timeCalc()"
-    >
-      احسب
-    </button>
-
-
-    <div
-      class="result"
-      id="timeResult"
-    ></div>
-
-  </div>
-
-</div>
-
 
 </main>
 
-
 <footer>
-
-  © 2026 احسبها لي — كل الحاسبات في مكان واحد
-
+  <h3>🧮 احسبها لي</h3>
+  <p>حاسبات وتحويل وحدات مجانية وسهلة الاستخدام.</p>
+  <p>© 2026 احسبها لي</p>
 </footer>
-
-
 
 <script>
 
-const $ = id =>
-  document.getElementById(id);
+/* =========================
+   Dark Mode
+========================= */
 
-const n = id =>
-  Number($(id).value);
-
-const out = (id,text) =>
-  $(id).textContent = text;
-
-
-
-/* الوضع الداكن */
-
-function toggleTheme(){
-
+function toggleDark(){
   document.body.classList.toggle("dark");
 
   localStorage.setItem(
-    "dark",
+    "darkMode",
     document.body.classList.contains("dark")
   );
-
 }
 
-
-if(
-  localStorage.getItem("dark") === "true"
-){
-
+if(localStorage.getItem("darkMode")==="true"){
   document.body.classList.add("dark");
-
 }
 
 
+/* =========================
+   Percentage
+========================= */
 
-/* فتح الحاسبة */
+function calcPercent(){
 
-document
-.querySelectorAll(".card")
-.forEach(card => {
+  let type=document.getElementById("percentType").value;
+  let a=parseFloat(document.getElementById("percentA").value);
+  let b=parseFloat(document.getElementById("percentB").value);
 
-  card.addEventListener(
-    "click",
-    function(e){
+  if(isNaN(a)||isNaN(b)){
+    document.getElementById("percentResult").innerText="اكتب الرقمين أولًا";
+    return;
+  }
 
-      if(
-        e.target.tagName === "INPUT" ||
-        e.target.tagName === "BUTTON"
-      ){
-        return;
-      }
+  let result;
 
-      this.classList.toggle("open");
-
+  if(type==="part"){
+    if(b===0){
+      result="لا يمكن القسمة على صفر";
+    }else{
+      result=(a/b*100).toFixed(2)+"%";
     }
-  );
-
-});
-
-
-
-/* حاسبة البنزين */
-
-function fuel(){
-
-  let distance = n("fuelDist");
-
-  let efficiency = n("fuelEff");
-
-  let price = n("fuelPrice");
-
-
-  if(
-    distance > 0 &&
-    efficiency > 0
-  ){
-
-    let liters =
-      distance / efficiency;
-
-    let cost =
-      liters * price;
-
-
-    out(
-      "fuelResult",
-      `الاستهلاك: ${liters.toFixed(2)} لتر — التكلفة: ${cost.toFixed(2)} جنيه`
-    );
-
-  }else{
-
-    out(
-      "fuelResult",
-      "اكتب البيانات بشكل صحيح"
-    );
-
   }
 
-}
-
-
-
-/* النسبة */
-
-function pct(){
-
-  let part = n("pctPart");
-
-  let total = n("pctTotal");
-
-
-  if(total > 0){
-
-    let result =
-      (part / total) * 100;
-
-
-    out(
-      "pctResult",
-      `النسبة = ${result.toFixed(2)}%`
-    );
-
-  }else{
-
-    out(
-      "pctResult",
-      "اكتب الكل أكبر من صفر"
-    );
-
+  if(type==="value"){
+    result=(a*b/100).toFixed(2);
   }
 
-}
-
-
-
-/* الخصم */
-
-function discount(){
-
-  let price =
-    n("discPrice");
-
-  let percent =
-    n("discPct");
-
-
-  let discountValue =
-    price * percent / 100;
-
-  let finalPrice =
-    price - discountValue;
-
-
-  out(
-    "discResult",
-    `قيمة الخصم: ${discountValue.toFixed(2)} جنيه — السعر بعد الخصم: ${finalPrice.toFixed(2)} جنيه`
-  );
-
-}
-
-
-
-/* تقسيم الفاتورة */
-
-function splitBill(){
-
-  let bill =
-    n("bill");
-
-  let people =
-    n("people");
-
-
-  if(people > 0){
-
-    let each =
-      bill / people;
-
-
-    out(
-      "billResult",
-      `نصيب الفرد: ${each.toFixed(2)} جنيه`
-    );
-
-  }else{
-
-    out(
-      "billResult",
-      "اكتب عدد الأشخاص"
-    );
-
+  if(type==="increase"){
+    result=(a+(a*b/100)).toFixed(2);
   }
 
-}
-
-
-
-/* التقسيط */
-
-function installment(){
-
-  let loan =
-    n("loan");
-
-  let months =
-    n("months");
-
-
-  if(months > 0){
-
-    let payment =
-      loan / months;
-
-
-    out(
-      "loanResult",
-      `القسط الشهري: ${payment.toFixed(2)} جنيه`
-    );
-
-  }else{
-
-    out(
-      "loanResult",
-      "اكتب عدد الشهور"
-    );
-
+  if(type==="decrease"){
+    result=(a-(a*b/100)).toFixed(2);
   }
 
+  document.getElementById("percentResult").innerText=result;
 }
 
 
+/* =========================
+   Discount
+========================= */
 
-/* الدرجات */
+function calcDiscount(){
 
-function grades(){
+  let price=parseFloat(document.getElementById("discountPrice").value);
+  let rate=parseFloat(document.getElementById("discountRate").value);
 
-  let grade =
-    n("grade");
-
-  let max =
-    n("maxGrade");
-
-
-  if(max > 0){
-
-    let percentage =
-      grade / max * 100;
-
-
-    out(
-      "gradeResult",
-      `النسبة: ${percentage.toFixed(2)}%`
-    );
-
-  }else{
-
-    out(
-      "gradeResult",
-      "اكتب الدرجة النهائية"
-    );
-
+  if(isNaN(price)||isNaN(rate)){
+    document.getElementById("discountResult").innerText="اكتب البيانات";
+    return;
   }
 
+  let discount=price*rate/100;
+  let finalPrice=price-discount;
+
+  document.getElementById("discountResult").innerText=
+    "قيمة الخصم: "+discount.toFixed(2)+
+    " | السعر بعد الخصم: "+finalPrice.toFixed(2);
 }
 
 
+/* =========================
+   Bill
+========================= */
 
-/* العمر */
+function calcBill(){
 
-function ageCalc(){
+  let bill=parseFloat(document.getElementById("bill").value);
+  let people=parseInt(document.getElementById("people").value);
 
-  let birth =
-    new Date(
-      $("birth").value
-    );
+  if(isNaN(bill)||isNaN(people)||people<=0){
+    document.getElementById("billResult").innerText="اكتب البيانات بشكل صحيح";
+    return;
+  }
 
-  let today =
-    new Date();
+  document.getElementById("billResult").innerText=
+    "نصيب الشخص: "+(bill/people).toFixed(2);
+}
 
+
+/* =========================
+   Installment
+========================= */
+
+function calcInstallment(){
+
+  let amount=parseFloat(document.getElementById("installAmount").value);
+  let months=parseInt(document.getElementById("installMonths").value);
+
+  if(isNaN(amount)||isNaN(months)||months<=0){
+    document.getElementById("installResult").innerText="اكتب البيانات بشكل صحيح";
+    return;
+  }
+
+  document.getElementById("installResult").innerText=
+    "القسط الشهري: "+(amount/months).toFixed(2);
+}
+
+
+/* =========================
+   Fuel
+========================= */
+
+function calcFuel(){
+
+  let distance=parseFloat(document.getElementById("fuelDistance").value);
+  let efficiency=parseFloat(document.getElementById("fuelEfficiency").value);
+  let price=parseFloat(document.getElementById("fuelPrice").value);
+
+  if(isNaN(distance)||isNaN(efficiency)||isNaN(price)||efficiency<=0){
+    document.getElementById("fuelResult").innerText="اكتب البيانات بشكل صحيح";
+    return;
+  }
+
+  let liters=distance/efficiency;
+  let cost=liters*price;
+
+  document.getElementById("fuelResult").innerText=
+    "الوقود: "+liters.toFixed(2)+" لتر | التكلفة: "+cost.toFixed(2);
+}
+
+
+/* =========================
+   Electricity
+========================= */
+
+function calcElectric(){
+
+  let usage=parseFloat(document.getElementById("electricUsage").value);
+  let price=parseFloat(document.getElementById("electricPrice").value);
+
+  if(isNaN(usage)||isNaN(price)){
+    document.getElementById("electricResult").innerText="اكتب البيانات";
+    return;
+  }
+
+  let cost=usage*price;
+
+  document.getElementById("electricResult").innerText=
+    "التكلفة التقديرية: "+cost.toFixed(2);
+}
+
+
+/* =========================
+   Grades
+========================= */
+
+function calcGrade(){
+
+  let grade=parseFloat(document.getElementById("grade").value);
+  let max=parseFloat(document.getElementById("maxGrade").value);
+
+  if(isNaN(grade)||isNaN(max)||max<=0){
+    document.getElementById("gradeResult").innerText="اكتب البيانات بشكل صحيح";
+    return;
+  }
+
+  document.getElementById("gradeResult").innerText=
+    "النسبة: "+(grade/max*100).toFixed(2)+"%";
+}
+
+
+/* =========================
+   Age
+========================= */
+
+function calcAge(){
+
+  let birth=new Date(document.getElementById("birthDate").value);
 
   if(isNaN(birth)){
-
-    out(
-      "ageResult",
-      "اختار تاريخ الميلاد"
-    );
-
+    document.getElementById("ageResult").innerText="اختر تاريخ الميلاد";
     return;
-
   }
 
+  let today=new Date();
 
-  let age =
-    today.getFullYear() -
-    birth.getFullYear();
+  let years=today.getFullYear()-birth.getFullYear();
 
-
-  let month =
-    today.getMonth() -
-    birth.getMonth();
-
+  let monthDiff=today.getMonth()-birth.getMonth();
 
   if(
-    month < 0 ||
-    (
-      month === 0 &&
-      today.getDate() < birth.getDate()
-    )
+    monthDiff<0 ||
+    (monthDiff===0 && today.getDate()<birth.getDate())
   ){
-
-    age--;
-
+    years--;
   }
 
-
-  out(
-    "ageResult",
-    `عمرك: ${age} سنة`
-  );
-
+  document.getElementById("ageResult").innerText=
+    "العمر: "+years+" سنة تقريبًا";
 }
 
 
+/* =========================
+   Time
+========================= */
 
-/* الوقت */
+function calcTime(){
 
-function timeCalc(){
+  let h=parseFloat(document.getElementById("hours").value)||0;
+  let m=parseFloat(document.getElementById("minutes").value)||0;
 
-  let hours =
-    n("hours");
+  let total=h*60+m;
 
-  let minutes =
-    n("mins");
-
-
-  let total =
-    hours * 60 + minutes;
-
-
-  out(
-    "timeResult",
-    `الإجمالي: ${total} دقيقة`
-  );
-
+  document.getElementById("timeResult").innerText=
+    "الإجمالي: "+total+" دقيقة";
 }
 
 
+/* =========================
+   Currency
+========================= */
 
-/* التصنيفات */
+function calcCurrency(){
 
-function filterTools(
-  category,
-  button
-){
+  let amount=parseFloat(document.getElementById("currencyAmount").value);
+  let rate=parseFloat(document.getElementById("currencyRate").value);
 
-  document
-  .querySelectorAll(".cat")
-  .forEach(
-    x => x.classList.remove("active")
-  );
+  if(isNaN(amount)||isNaN(rate)){
+    document.getElementById("currencyResult").innerText=
+      "اكتب المبلغ وسعر الصرف";
+    return;
+  }
+
+  document.getElementById("currencyResult").innerText=
+    "النتيجة: "+(amount*rate).toFixed(2);
+}
 
 
-  button.classList.add("active");
+/* =========================
+   Unit Converter Data
+========================= */
+
+const units={
+
+  length:{
+    "متر":1,
+    "كيلومتر":1000,
+    "سنتيمتر":0.01,
+    "ملليمتر":0.001,
+    "ميكرومتر":0.000001,
+    "نانومتر":0.000000001,
+    "بوصة":0.0254,
+    "قدم":0.3048,
+    "ياردة":0.9144,
+    "ميل":1609.344,
+    "ميل بحري":1852
+  },
+
+  mass:{
+    "كيلوجرام":1,
+    "جرام":0.001,
+    "ملليجرام":0.000001,
+    "ميكروجرام":0.000000001,
+    "طن متري":1000,
+    "رطل":0.45359237,
+    "أوقية":0.028349523125,
+    "حبة":0.00006479891
+  },
+
+  area:{
+    "متر مربع":1,
+    "كيلومتر مربع":1000000,
+    "سنتيمتر مربع":0.0001,
+    "ملليمتر مربع":0.000001,
+    "هكتار":10000,
+    "فدان":4200.833,
+    "قدم مربع":0.09290304,
+    "بوصة مربعة":0.00064516,
+    "ميل مربع":2589988.11
+  },
+
+  volume:{
+    "لتر":1,
+    "ملليلتر":0.001,
+    "متر مكعب":1000,
+    "سنتيمتر مكعب":0.001,
+    "جالون أمريكي":3.785411784,
+    "جالون بريطاني":4.54609,
+    "كوب أمريكي":0.2365882365,
+    "قدم مكعب":28.316846592,
+    "بوصة مكعبة":0.016387064
+  },
+
+  speed:{
+    "متر/ثانية":1,
+    "كيلومتر/ساعة":0.2777777778,
+    "ميل/ساعة":0.44704,
+    "قدم/ثانية":0.3048,
+    "عقدة":0.5144444444
+  },
+
+  pressure:{
+    "باسكال":1,
+    "كيلوباسكال":1000,
+    "ميجاباسكال":1000000,
+    "بار":100000,
+    "ضغط جوي":101325,
+    "PSI":6894.757293,
+    "تور":133.322368
+  },
+
+  energy:{
+    "جول":1,
+    "كيلوجول":1000,
+    "كالوري":4.184,
+    "كيلوكالوري":4184,
+    "وات ساعة":3600,
+    "كيلووات ساعة":3600000,
+    "BTU":1055.056
+  },
+
+  power:{
+    "وات":1,
+    "كيلووات":1000,
+    "ميجاوات":1000000,
+    "حصان ميكانيكي":745.699872
+  },
+
+  frequency:{
+    "هرتز":1,
+    "كيلوهرتز":1000,
+    "ميجاهرتز":1000000,
+    "جيجاهرتز":1000000000
+  },
+
+  digital:{
+    "بت":1,
+    "بايت":8,
+    "كيلوبايت":8000,
+    "ميجابايت":8000000,
+    "جيجابايت":8000000000,
+    "تيرابايت":8000000000000
+  },
+
+  angle:{
+    "درجة":1,
+    "راديان":57.295779513,
+    "غراد":0.9
+  }
+
+};
 
 
-  document
-  .querySelectorAll(".card")
-  .forEach(card => {
+/* =========================
+   Load Units
+========================= */
 
-    if(
-      category === "all" ||
-      card.dataset.cat === category
-    ){
+function loadUnits(){
 
-      card.style.display =
-        "block";
+  let category=document.getElementById("unitCategory").value;
 
-    }else{
+  let from=document.getElementById("unitFrom");
+  let to=document.getElementById("unitTo");
 
-      card.style.display =
-        "none";
+  from.innerHTML="";
+  to.innerHTML="";
 
+  if(category==="temperature"){
+
+    let tempUnits=["مئوية","فهرنهايت","كلفن"];
+
+    tempUnits.forEach(u=>{
+      from.add(new Option(u,u));
+      to.add(new Option(u,u));
+    });
+
+    return;
+  }
+
+  Object.keys(units[category]).forEach(u=>{
+    from.add(new Option(u,u));
+    to.add(new Option(u,u));
+  });
+}
+
+
+/* =========================
+   Unit Conversion
+========================= */
+
+function convertUnit(){
+
+  let category=document.getElementById("unitCategory").value;
+  let from=document.getElementById("unitFrom").value;
+  let to=document.getElementById("unitTo").value;
+  let value=parseFloat(document.getElementById("unitValue").value);
+
+  if(isNaN(value)){
+    document.getElementById("unitResult").innerText=
+      "اكتب القيمة أولًا";
+    return;
+  }
+
+  let result;
+
+  if(category==="temperature"){
+
+    let celsius;
+
+    if(from==="مئوية"){
+      celsius=value;
     }
 
-  });
+    if(from==="فهرنهايت"){
+      celsius=(value-32)*5/9;
+    }
 
+    if(from==="كلفن"){
+      celsius=value-273.15;
+    }
+
+    if(to==="مئوية"){
+      result=celsius;
+    }
+
+    if(to==="فهرنهايت"){
+      result=celsius*9/5+32;
+    }
+
+    if(to==="كلفن"){
+      result=celsius+273.15;
+    }
+
+  }else{
+
+    let base=value*units[category][from];
+
+    result=base/units[category][to];
+  }
+
+  document.getElementById("unitResult").innerText=
+    value+" "+from+" = "+Number(result.toFixed(10))+" "+to;
 }
 
 
-
-/* البحث */
+/* =========================
+   Search
+========================= */
 
 function searchTools(){
 
-  let query =
-    $("search")
-    .value
-    .toLowerCase()
-    .trim();
+  let query=document.getElementById("search").value.toLowerCase();
 
+  document.querySelectorAll(".tool").forEach(card=>{
 
-  document
-  .querySelectorAll(".card")
-  .forEach(card => {
-
-    let name =
+    let text=(
+      card.innerText+
+      " "+
       card.dataset.name
-      .toLowerCase();
+    ).toLowerCase();
 
-
-    if(
-      name.includes(query)
-    ){
-
-      card.style.display =
-        "block";
-
+    if(text.includes(query)){
+      card.classList.remove("hidden");
     }else{
-
-      card.style.display =
-        "none";
-
+      card.classList.add("hidden");
     }
 
   });
-
 }
+
+
+/* =========================
+   Categories
+========================= */
+
+function filterTools(category,button){
+
+  document.querySelectorAll(".category")
+    .forEach(b=>b.classList.remove("active"));
+
+  button.classList.add("active");
+
+  document.querySelectorAll(".tool").forEach(card=>{
+
+    if(category==="all"){
+      card.classList.remove("hidden");
+      return;
+    }
+
+    if(card.classList.contains(category)){
+      card.classList.remove("hidden");
+    }else{
+      card.classList.add("hidden");
+    }
+
+  });
+}
+
+
+/* =========================
+   Start Unit Converter
+========================= */
+
+loadUnits();
 
 </script>
 
